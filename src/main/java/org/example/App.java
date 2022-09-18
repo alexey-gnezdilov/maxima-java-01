@@ -8,6 +8,7 @@ public class App
         System.out.println(fibonazzi((byte)8));
         System.out.println(daysCount((byte)2, 2010));
         System.out.println(isSimple(4));
+        System.out.println(maxDigitsSumPosition(new int[]{999, 23, 123, 34, 1, 555}));
     }
 
     public static void replace(int x, int y) {
@@ -75,5 +76,26 @@ public class App
             }
         }
         return 0;
+    }
+
+    public static byte maxDigitsSumPosition(int[] arr) {
+        byte indexOfMaxSumDigit = 0;
+        arr[0] = digitSum(arr[0]);
+        for (byte i = 1; i < arr.length; i++) {
+            arr[i] = digitSum(arr[i]);
+            if (arr[i] > arr[indexOfMaxSumDigit]) {
+                indexOfMaxSumDigit = i;
+            }
+        }
+        return (byte) (indexOfMaxSumDigit + 1);
+    }
+
+    public static int digitSum(int n) {
+        int sum = 0;
+        while (n != 0) {
+            sum += (n % 10);
+            n /= 10;
+        }
+        return sum;
     }
 }
