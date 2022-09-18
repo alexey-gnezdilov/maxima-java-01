@@ -7,6 +7,7 @@ public class App
         replace(5, 7);
         System.out.println(fibonazzi((byte)8));
         System.out.println(daysCount((byte)2, 2010));
+        System.out.println(isSimple(4));
     }
 
     public static void replace(int x, int y) {
@@ -57,6 +58,21 @@ public class App
             default:
                 System.out.println("There is not such month.");
                 break;
+        }
+        return 0;
+    }
+
+    public static int isSimple(int n) {
+        boolean isChecked = (n != -2 && n != -1 && n != 1 && n != 2);
+        if (n == 0) {
+            return 1;
+        }
+        if (isChecked) {
+            for (int i = 2; i * i <= Math.abs(n); i += 1) {
+                if (n % i == 0) {
+                    return i;
+                }
+            }
         }
         return 0;
     }
